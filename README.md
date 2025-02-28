@@ -9,30 +9,6 @@ Even the grass around her seemed like a maze.
 
 Help her find her way out of the maze!
 
-## Prerequisites
-
-This is a Node.js project, in a PMPM workspace.
-
-Feel free to use any other tools you want, in sub-folders referenced in `pnpm-workspace.yaml`.
-
-- node.js > 22.x [https://nodejs.org/en](https://nodejs.org/en)
-- pnpm > 10.x `npm i -g pnpm`
-Then, from root
-```bash
-pnpm install
-```
-
-## Usage
-
-The sub-folder `vite-ts-node` is a Vite-Typescript-Nodejs project, preset to work with the kata easily.  
-
-To use it: 
-```bash
-cd vite-ts-node
-pnpm start
-```
-Then, modify `vite-ts-node/src/main.ts` to work on kata specific code.
-
 ## The Maze
 
 ```typescript
@@ -139,6 +115,31 @@ const solution10x10 = [
 ## Additional challenges
 
 - Find the shortest path
+
+## Prerequisites
+
+This is a Node.js project, in a PMPM workspace.
+
+Feel free to use any other tools you want, in sub-folders referenced in `pnpm-workspace.yaml`.
+
+- node.js > 22.x [https://nodejs.org/en](https://nodejs.org/en)
+- pnpm > 10.x `npm i -g pnpm`
+Then, from root
+```bash
+pnpm install
+```
+
+## Usage
+
+The sub-folder `vite-ts-node` is a Vite-Typescript-Nodejs project, preset to work with the kata easily.  
+
+To use it: 
+```bash
+cd vite-ts-node
+pnpm start
+```
+Then, modify `vite-ts-node/src/main.ts` to work on kata specific code.
+
 
 ## Credits
 
