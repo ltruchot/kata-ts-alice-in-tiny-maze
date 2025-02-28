@@ -1,115 +1,131 @@
-# Alice in Tiny Maze
+# Alice in Tiny Maze - A TypeScript Code Kata
 
 
 ![Tiny Maze](https://images.weserv.nl/?url=https://ih1.redbubble.net/image.2038436096.2542/flat,750x,075,f-pad,750x1000,f8f8f8.jpg&w=300)
 
 Alice found herself very tiny and wandering around Wonderland.  
-Even the grass around her seemed like a maze.
+Even the grass around her seemed like a maze.  
+
+
+Help her find her way out of the maze!
+
+## Prerequisites
+
+- node.js 22.x, https://nodejs.org/en
+- pnpm 10.x, `npm i -g pnpm`
+
+## Installation & Usage
+Then
+```bash
+pnpm install
+pnpm start
+```
 
 ## The Maze
 
 ```typescript
 const maze3x3 = [
-  ['B', 'O', 'I'],
-  ['I', 'O', 'I'],
-  ['I', 'O', 'E'],
+  ['⛩️', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '⛩️'],
 ];
 ```
 
-A maze is represented by a matrix of characters.
-- `B` (Begin) is the entry point of the maze, on the top-left corner of the matrix (always here).
-- `E` (End) is the exit point of the maze, on the bottom-right corner of the matrix (always here).
-- `O` (Open) is an open path.
-- `I` (Represents an obstacle) is an unpassable wall.
+A maze is represented by a matrix of emojis.
+- `⛩️` is the entry point of the maze, on the top-left corner of the matrix (always here).
+- `⛩️` is the exit point of the maze, on the bottom-right corner of the matrix (always here).
+- `⭕` is an open path.
+- `🌳` is an unpassable tree, just like a wall.
   
-There is ALWAYS at least a valid path from `B` to `E`, composed of orthogonally adjacent `O` (open) cells.
+There is **always at least a valid path** from Nord-West `⛩️` to South-East `⛩️`, composed of orthogonally adjacent `⭕` cells.
 
 ## Your Goal
 
-Your goal is to find the a path from `B` to `E`.
-- You CANNOT move through `I` (walls).
+Your goal is to find the a path from Nord-West `⛩️` to South-East `⛩️`.
+- You CANNOT move through `🌳`.
 - You CANNOT move diagonally.
-- You CANNOT move through the same `O` (open) cell twice.
+- You CANNOT go back on the same `⭕` cell already visited.
 
 
-You have to fill the shortest path from `B` to `E` with `X`, without altering the original maze.  
+You have to fill the shortest path from `⛩️` to `⛩️` with `👣`, including those starting and ending points.  
 
-If there is more than one valid path, the shortest path is preferred, but not mandatory.  
-You output a tuple of the original maze, the filled maze, and the size of the path.  
 
+If there is more than one valid path, the shortest path is preferred, but **not mandatory**.  
+
+
+### Examples
 
 ```typescript
 const maze2x2 = [
-  ['B', 'O'],
-  ['I', 'E'],
+  ['⛩️', '⭕'],
+  ['🌳', '⛩️'],
 ];
 const solution2x2 = [
-  ['X', 'X'],
-  ['I', 'X'],
+  ['👣', '👣'],
+  ['🌳', '👣'],
 ];
-const pathSize2x2 = 3;
-const validResult2x2 = [maze2x2, solution2x2, pathSize2x2];
 
 // -------------------------
 
 const maze3x3 = [
-  ['B', 'O', 'I'],
-  ['I', 'O', 'I'],
-  ['I', 'O', 'E'],
+  ['⛩️', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '⛩️'],
 ];
 const solution3x3 = [
-  ['X', 'X', 'I'],
-  ['I', 'X', 'I'],
-  ['I', 'X', 'X'],
+  ['👣', '👣', '🌳'],
+  ['🌳', '👣', '🌳'],
+  ['🌳', '👣', '👣'],
 ];
-const pathSize3x3 = 5;
-const validResult3x3 = [maze3x3, solution3x3, pathSize3x3];
+];
 
 // -------------------------
 
 const maze4x4 = [
-  ['B', 'O', 'O', 'I'],
-  ['I', 'O', 'O', 'I'],
-  ['I', 'I', 'O', 'O'],
-  ['I', 'O', 'O', 'E'],
+  ['⛩️', '⭕', '⭕', '🌳'],
+  ['🌳', '⭕', '⭕', '🌳'],
+  ['🌳', '🌳', '⭕', '⭕'],
+  ['🌳', '⭕', '⭕', '⛩️'],
 ];
 const solution4x4 = [
-  ['X', 'X', 'O', 'I'],
-  ['I', 'X', 'X', 'I'],
-  ['I', 'I', 'X', 'X'],
-  ['I', 'O', 'O', 'X'],
+  ['👣', '👣', '👣', '🌳'],
+  ['🌳', '⭕', '👣', '🌳'],
+  ['🌳', '🌳', '👣', '👣'],
+  ['🌳', '⭕', '⭕', '👣'],
 ];
-const pathSize4x4 = 7;
-const validResult4x4 = [maze4x4, solution4x4, pathSize4x4];
+const solution4x4Bis = [
+  ['👣', '👣', '⭕', '🌳'],
+  ['🌳', '👣', '👣', '🌳'],
+  ['🌳', '🌳', '👣', '⭕'],
+  ['🌳', '⭕', '👣', '👣'],
+];
+
 // -------------------------
 
-
 const maze10x10 = [
-  ['B', 'O', 'O', 'O', 'I', 'I', 'I', 'I', 'I', 'I'],
-  ['I', 'O', 'I', 'O', 'I', 'O', 'O', 'O', 'O', 'I'],
-  ['I', 'O', 'I', 'O', 'I', 'O', 'I', 'I', 'O', 'I'],
-  ['I', 'O', 'I', 'O', 'O', 'O', 'I', 'O', 'O', 'I'],
-  ['I', 'O', 'I', 'I', 'I', 'I', 'I', 'O', 'I', 'I'],
-  ['I', 'O', 'O', 'O', 'O', 'O', 'I', 'O', 'O', 'I'],
-  ['I', 'I', 'I', 'I', 'I', 'O', 'I', 'I', 'O', 'I'],
-  ['I', 'O', 'O', 'O', 'I', 'O', 'O', 'O', 'O', 'I'],
-  ['I', 'O', 'I', 'O', 'I', 'I', 'I', 'I', 'O', 'I'],
-  ['I', 'O', 'I', 'O', 'O', 'O', 'O', 'O', 'O', 'E'],
+  ['⛩️', '⭕', '⭕', '⭕', '🌳', '🌳', '🌳', '🌳', '🌳', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '🌳', '⭕', '⭕', '⭕', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '🌳', '⭕', '🌳', '🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '⭕', '⭕', '🌳', '⭕', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳', '🌳', '🌳', '🌳', '🌳', '⭕', '🌳', '🌳'],
+  ['🌳', '⭕', '⭕', '⭕', '⭕', '⭕', '🌳', '⭕', '⭕', '🌳'],
+  ['🌳', '🌳', '🌳', '🌳', '🌳', '⭕', '🌳', '🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '⭕', '⭕', '🌳', '⭕', '⭕', '⭕', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '🌳', '🌳', '🌳', '🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '⭕', '⭕', '⭕', '⭕', '⭕', '⛩️'],
 ];
 const solution10x10 = [
-  ['X', 'X', 'O', 'O', 'I', 'I', 'I', 'I', 'I', 'I'],
-  ['I', 'X', 'I', 'O', 'I', 'O', 'O', 'O', 'O', 'I'],
-  ['I', 'X', 'I', 'O', 'I', 'O', 'I', 'I', 'O', 'I'],
-  ['I', 'X', 'I', 'O', 'O', 'O', 'I', 'O', 'O', 'I'],
-  ['I', 'X', 'I', 'I', 'I', 'I', 'I', 'O', 'I', 'I'],
-  ['I', 'X', 'X', 'X', 'X', 'X', 'I', 'O', 'O', 'I'],
-  ['I', 'I', 'I', 'I', 'I', 'X', 'I', 'I', 'O', 'I'],
-  ['I', 'O', 'O', 'O', 'I', 'X', 'X', 'X', 'X', 'I'],
-  ['I', 'O', 'I', 'O', 'I', 'I', 'I', 'I', 'X', 'I'],
-  ['I', 'O', 'I', 'O', 'O', 'O', 'O', 'O', 'X', 'X'],
+  ['👣', '👣', '⭕', '⭕', '🌳', '🌳', '🌳', '🌳', '🌳', '🌳'],
+  ['🌳', '👣', '🌳', '⭕', '🌳', '⭕', '⭕', '⭕', '⭕', '🌳'],
+  ['🌳', '👣', '🌳', '⭕', '🌳', '⭕', '🌳', '🌳', '⭕', '🌳'],
+  ['🌳', '👣', '🌳', '⭕', '⭕', '⭕', '🌳', '⭕', '⭕', '🌳'],
+  ['🌳', '👣', '🌳', '🌳', '🌳', '🌳', '🌳', '⭕', '🌳', '🌳'],
+  ['🌳', '👣', '👣', '👣', '👣', '👣', '🌳', '⭕', '⭕', '🌳'],
+  ['🌳', '🌳', '🌳', '🌳', '🌳', '👣', '🌳', '🌳', '⭕', '🌳'],
+  ['🌳', '⭕', '⭕', '⭕', '🌳', '👣', '👣', '👣', '👣', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '🌳', '🌳', '🌳', '🌳', '👣', '🌳'],
+  ['🌳', '⭕', '🌳', '⭕', '⭕', '⭕', '⭕', '⭕', '👣', '👣'],
 ];
-const pathSize10x10 = 19;
-const validResult10x10 = [maze10x10, solution10x10, pathSize10x10];
 ```
 
 ## Additional challenges
