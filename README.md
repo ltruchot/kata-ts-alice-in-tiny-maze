@@ -8,6 +8,14 @@ Even the grass around her seemed like a maze.
 
 ## The Maze
 
+```typescript
+const maze3x3 = [
+  ['B', 'O', 'I'],
+  ['I', 'O', 'I'],
+  ['I', 'O', 'E'],
+];
+```
+
 A maze is represented by a matrix of characters.
 - `B` (Begin) is the entry point of the maze, on the top-left corner of the matrix (always here).
 - `E` (End) is the exit point of the maze, on the bottom-right corner of the matrix (always here).
@@ -18,8 +26,7 @@ There is ALWAYS at least a valid path from `B` to `E`, composed of orthogonally 
 
 ## Your Goal
 
-Your goal is to find the shortest path from `B` to `E`.
-- You CANNOT move outside the maze, it doesn't communicate with opposed boundaries.
+Your goal is to find the a path from `B` to `E`.
 - You CANNOT move through `I` (walls).
 - You CANNOT move diagonally.
 - You CANNOT move through the same `O` (open) cell twice.
