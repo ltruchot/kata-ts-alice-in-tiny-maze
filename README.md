@@ -20,8 +20,7 @@ const maze3x3 = [
 ```
 
 A maze is represented by a matrix of emojis.
-- `⛩️` is the entry point of the maze, on the top-left corner of the matrix (always here).
-- `⛩️` is the exit point of the maze, on the bottom-right corner of the matrix (always here).
+- `⛩️` are gates of the maze, entry on the top-left corner, exit on the bottom-right corner of the matrix.
 - `⭕` is an open path.
 - `🌳` is an unpassable tree, just like a wall.
   
