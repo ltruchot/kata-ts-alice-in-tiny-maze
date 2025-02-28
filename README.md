@@ -11,15 +11,27 @@ Help her find her way out of the maze!
 
 ## Prerequisites
 
-- node.js 22.x, https://nodejs.org/en
-- pnpm 10.x, `npm i -g pnpm`
+This is a Node.js project, in a PMPM workspace.
 
-## Installation & Usage
-Then
+Feel free to use any other tools you want, in sub-folders referenced in `pnpm-workspace.yaml`.
+
+- node.js > 22.x [https://nodejs.org/en](https://nodejs.org/en)
+- pnpm > 10.x `npm i -g pnpm`
+Then, from root
 ```bash
 pnpm install
+```
+
+## Usage
+
+The sub-folder `vite-ts-node` is a Vite-Typescript-Nodejs project, preset to work with the kata easily.  
+
+To use it: 
+```bash
+cd vite-ts-node
 pnpm start
 ```
+Then, modify `vite-ts-node/src/main.ts` to work on kata specific code.
 
 ## The Maze
 
@@ -47,10 +59,7 @@ Your goal is to find the a path from Nord-West `⛩️` to South-East `⛩️`.
 - You CANNOT go back on the same `⭕` cell already visited.
 
 
-You have to fill the shortest path from `⛩️` to `⛩️` with `👣`, including those starting and ending points.  
-
-
-If there is more than one valid path, the shortest path is preferred, but **not mandatory**.  
+You have to **fill a valid path** with `👣`, including from `⛩️` to `⛩️` points (find the shortest path is not mandatory).  
 
 
 ### Examples
@@ -76,7 +85,6 @@ const solution3x3 = [
   ['👣', '👣', '🌳'],
   ['🌳', '👣', '🌳'],
   ['🌳', '👣', '👣'],
-];
 ];
 
 // -------------------------

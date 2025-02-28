@@ -8,9 +8,9 @@ export default defineConfig({
   plugins: [
     VitePluginNode({
       adapter: 'express',
-      appPath: './src/index.ts',
+      appPath: './src/main.ts',
       exportName: 'app',
-      tsCompiler: 'typescript'
+      tsCompiler: 'esbuild'
     })
   ],
   optimizeDeps: {
