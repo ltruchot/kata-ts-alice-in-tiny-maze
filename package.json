@@ -1,0 +1,17 @@
+{
+  "name": "kata-ts-alice-in-tiny-maze",
+  "version": "1.0.0",
+  "description": "A TypeScript kata where Alice needs to find her way through a tiny maze in Wonderland",
+  "author": "Loïc TRUCHOT <loic.truchot.pro@gmail.com>",
+  "engines": {
+    "node": ">=22.14.0",
+    "pnpm": ">=10.5.2"
+  },
+  "license": "CC0-1.0",
+  "main": "vite-ts-node/src/index.ts",
+  "scripts": {
+    "start": "pnpm --filter vite-ts-node start",
+    "test": "pnpm --filter vite-ts-node test"
+  },
+  "keywords": []
+}
